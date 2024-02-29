@@ -295,7 +295,7 @@ Public Class dlgBarAndPieChart
         ucrInputPlace.SetLinkedDisplayControl(lblPlace)
         ucrReceiverLabel.SetLinkedDisplayControl(lblLabel)
 
-        ucrInputLollipopColour.SetParameter(New RParameter("point.colour", 0))
+        'ucrInputLollipopColour.SetParameter(New RParameter("point.colour", 0))
         dctLollipopColours.Add("SteelBlue", Chr(34) & "steelBlue" & Chr(34))
         dctLollipopColours.Add("Black", Chr(34) & "black" & Chr(34))
         dctLollipopColours.Add("White", Chr(34) & "white" & Chr(34))
@@ -308,8 +308,8 @@ Public Class dlgBarAndPieChart
         dctLollipopColours.Add("Grey", Chr(34) & "grey" & Chr(34))
         dctLollipopColours.Add("Brown", Chr(34) & "brown" & Chr(34))
         dctLollipopColours.Add("Pink", Chr(34) & "pink" & Chr(34))
-        ucrInputLollipopColour.SetItems(dctLollipopColours)
-        ucrInputLollipopColour.bAllowNonConditionValues = True
+        'ucrInputLollipopColour.SetItems(dctLollipopColours)
+        'ucrInputLollipopColour.bAllowNonConditionValues = True
 
         ucrNudLollipopSize.SetParameter(New RParameter("point.size", 1))
         ucrNudLollipopSize.DecimalPlaces = 0
@@ -320,9 +320,9 @@ Public Class dlgBarAndPieChart
         ucrChkLollipop.SetText("Lollipop")
         ucrChkLollipop.AddParameterPresentCondition(True, "geom_lollipop")
         ucrChkLollipop.AddParameterPresentCondition(False, "geom_lollipop", False)
-        ucrChkLollipop.AddToLinkedControls({ucrNudLollipopSize, ucrInputLollipopColour}, {True}, bNewLinkedHideIfParameterMissing:=True)
+        'ucrChkLollipop.AddToLinkedControls({ucrNudLollipopSize, ucrInputLollipopColour}, {True}, bNewLinkedHideIfParameterMissing:=True)
         ucrNudLollipopSize.SetLinkedDisplayControl(lblLollipopSize)
-        ucrInputLollipopColour.SetLinkedDisplayControl(lblLollipopColour)
+        'ucrInputLollipopColour.SetLinkedDisplayControl(lblLollipopColour)
 
         ucrInputAddReorder.SetItems({strAscending, strDescending, strReverse, strNone})
         ucrInputAddReorder.SetDropDownStyleAsNonEditable()
@@ -683,7 +683,7 @@ Public Class dlgBarAndPieChart
         ucrInputLabelPosition.SetRCode(clsGeomTextFunction, bReset)
         ucrInputLabelSize.SetRCode(clsGeomTextFunction, bReset)
         ucrNudLollipopSize.SetRCode(clsGeomLollipopFunction, bReset)
-        ucrInputLollipopColour.SetRCode(clsGeomLollipopFunction, bReset)
+        'ucrInputLollipopColour.SetRCode(clsGeomLollipopFunction, bReset)
         ucrChkLollipop.SetRCode(clsBaseOperator, bReset)
         ucrReceiverArea.SetRCode(clsAsNumericFunction, bReset)
         ucrReceiverFill.SetRCode(clsGeomTreemapAesFunction, bReset)
