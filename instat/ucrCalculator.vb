@@ -334,8 +334,33 @@ Public Class ucrCalculator
         ttCalculator.SetToolTip(cmdA1, "Ratio of Bessel functions for values of kappa parameter. Used in the von Mises (circular normal) distribution kappa = 0.9 gives A1 same as rho value for 1,2,3,6 data.")
         ttCalculator.SetToolTip(cmdAngDev, "The angular deviation is square root of the angular variance, so between 0 and sqrt(2).")
 
+        'Dates/Times keyboard tooltips
+        ttCalculator.SetToolTip(cmdDate, "Get the date part of a date-time variable")
+        ttCalculator.SetToolTip(cmdAsDate, "Converts a character or numeric variable into a date. For example as_date(30) or as_date(""19700131"") or as.date(""1970.jan-31"") each give 1970-01-31")
+        ttCalculator.SetToolTip(cmdDateTime, "Converts a character or numeric variable into a date-time variable. For example as_datetime(30) gives 1970-01-01 00:00:30 UTC")
+        ttCalculator.SetToolTip(cmdTime, "Converts seconds, minutes, hours into a time variable. For example hms(185) gives 00:03:05, hms(25, 64) gives 01:04:25")
+        ttCalculator.SetToolTip(cmdYmd, "Makes a date variable from various character or numeric formats in year-month-day order. For example ymd(19840512) gives 1984-05-12")
+        ttCalculator.SetToolTip(cmdDmy, "Makes a date variable from various formats in day-month-year order. For example dmy(12051984) gives 1984-05-12")
+        ttCalculator.SetToolTip(cmdMdy, " Makes a date variable for mdy order. For example mdy(5121984) gives 1984-05-12. (Note alternatives of myd, ydm and dym)")
+        ttCalculator.SetToolTip(cmdAsTime, "Makes a time variable from numeric or character variable. For example: as_hms(185) gives 00:03:05, as_hms(""14:55:10"") gives 14:55:10")
+        ttCalculator.SetToolTip(cmdYmdHms, "Make a date-time variable from various character or numeric formats")
+        ttCalculator.SetToolTip(cmdYmdHm, " Make a date-time variable from various formats. For example ymd_hm(202406161201) gives 2024-06-16 12:01:00 UTC")
+        ttCalculator.SetToolTip(cmdYmdH, "Make a date-time variable from various formats. For example ymd_h(""2024.6:16,12"") gives ""2024-06-16 12:00:00 UTC""")
+        ttCalculator.SetToolTip(cmdLeap, "True if date is from a leap year and FALSE otherwise. For example leap(1984-05-12) is TRUE")
+        ttCalculator.SetToolTip(cmdYear, "Extract year from date or date-time. For example year(""1984-5-12"") gives 1984")
+        ttCalculator.SetToolTip(cmdMonth, "Extract month from a date or date-time variable")
+        ttCalculator.SetToolTip(cmdDay, "Extract day in month from date or date-time. For example day(""1984-5-12"" gives 12")
+        ttCalculator.SetToolTip(cmdYday, "Gives the day in the year, and depends on leap year. For example yday(""1984-3-1"") gives 61, while yday(""1986-3-1"") gives 60")
+        ttCalculator.SetToolTip(cmdWday, "Gives the day of the week from a date, or date-time variable. For example wday(""1984--5-12"", label=TRUE) gives Sat")
+        ttCalculator.SetToolTip(cmdD_In_M, "Gives the number of days in the month from date, or date-time. For example d_in_m(""1984_2-12"") gives 29 as 1984 is a leap year")
+        ttCalculator.SetToolTip(cmdAm, "TRUE or FALSE from date-time variable. For example am(""1984-05-12 14:23:45"") is FALSE")
+        ttCalculator.SetToolTip(cmdPm, "TRUE or FALSE from date-time variable. For example pm(""1984-05-12 14:23:45"") is TRUE")
+        ttCalculator.SetToolTip(cmdHour, "Extract hour from date-time variable. For example hour(""1984-05-12 14:23:45"") is 14. Also hour(""1984-05-12"") is 0")
+        ttCalculator.SetToolTip(cmdMinutes, "Extract minute from date-time variable. For example minute(""1984-05-12 14:23:45"") Is 23")
+        ttCalculator.SetToolTip(cmdSec, "Extract second from date-time variable. For example second(""1984-05-12 14:23:45"") is 45")
+        ttCalculator.SetToolTip(cmdQuarter, " 3-month period of the year from a date or date-time variable. For example quarter(""1984-05-12"") gives 2")
 
-        Const strTooltipCmdLength = "number of observations: For example length(c(1,2,3,4,NA)) = 5 "
+        Const strTooltipCmdLength = "number Of observations: For example length(c(1,2,3,4,NA)) = 5 "
         ttCalculator.SetToolTip(cmdLength, strTooltipCmdLength)
         ttCalculator.SetToolTip(cmdListLength, strTooltipCmdLength)
 
@@ -1534,9 +1559,41 @@ Public Class ucrCalculator
         End If
     End Sub
 
+    Private Sub cmdAsDate_Click(sender As Object, e As EventArgs) Handles cmdAsDate.Click
+        If chkShowParameters.Checked Then
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("lubridate::as_date(x= )", 1)
+        Else
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("lubridate::as_date()", 1)
+        End If
+    End Sub
+
+    Private Sub cmdYmdHms_Click(sender As Object, e As EventArgs) Handles cmdYmdHms.Click
+        If chkShowParameters.Checked Then
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("lubridate::ymd_hms(x= ) ", 1)
+        Else
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("lubridate::ymd_hms( ) ", 1)
+        End If
+    End Sub
+
+    Private Sub cmdYmdHm_Click(sender As Object, e As EventArgs) Handles cmdYmdHm.Click
+        If chkShowParameters.Checked Then
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("lubridate::ymd_hm(x= ) ", 1)
+        Else
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("lubridate::ymd_hm( ) ", 1)
+        End If
+    End Sub
+
+    Private Sub cmdYmdH_Click(sender As Object, e As EventArgs) Handles cmdYmdH.Click
+        If chkShowParameters.Checked Then
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("lubridate::ymd_h(x= ) ", 1)
+        Else
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("lubridate::ymd_h( )", 1)
+        End If
+    End Sub
+
     Private Sub cmdLeap_Click(sender As Object, e As EventArgs) Handles cmdLeap.Click
         If chkShowParameters.Checked Then
-            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("lubridate::leap_year(x= )", 1)
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("lubridate::leap_year(date= )", 1)
         Else
             ucrReceiverForCalculation.AddToReceiverAtCursorPosition("lubridate::leap_year()", 1)
         End If
@@ -1573,7 +1630,7 @@ Public Class ucrCalculator
             ucrReceiverForCalculation.AddToReceiverAtCursorPosition("lubridate::hour()", 1)
         End If
     End Sub
-    Private Sub cmdMinutes_Click(sender As Object, e As EventArgs) Handles cmdminutes.Click
+    Private Sub cmdMinutes_Click(sender As Object, e As EventArgs) Handles cmdMinutes.Click
         If chkShowParameters.Checked Then
             ucrReceiverForCalculation.AddToReceiverAtCursorPosition("lubridate::minute(x = )", 1)
         Else
@@ -4069,6 +4126,14 @@ Public Class ucrCalculator
             ucrReceiverForCalculation.AddToReceiverAtCursorPosition("hms::hms(seconds = , minutes = , hours = , days = )", 32)
         Else
             ucrReceiverForCalculation.AddToReceiverAtCursorPosition("hms::hms()", 1)
+        End If
+    End Sub
+
+    Private Sub cmdAsTime_Click(sender As Object, e As EventArgs) Handles cmdAsTime.Click
+        If chkShowParameters.Checked Then
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("hms::as_hms(x= )", 32)
+        Else
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("hms::as_hms()", 1)
         End If
     End Sub
 
