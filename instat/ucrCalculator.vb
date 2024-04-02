@@ -280,7 +280,7 @@ Public Class ucrCalculator
         ' Complex keyboard tooltips
         ttCalculator.SetToolTip(cmdComplexPi, "pi = 3.14159")
         ttCalculator.SetToolTip(cmdComplexi, "i is defined as the square root of -1. So sqrt(as.complex(-1)) = 0 + 1i")
-        ttCalculator.SetToolTip(cmdComplex, "Construct a complex number. For example complex(3, 2) gives 3 + 2i.")
+        ttCalculator.SetToolTip(cmdComplex, "Generate a complex variable. For example complex(3, 2:4,1. 5) gives 2+1.5i, 3+1.5i, 4+1.5i")
         ttCalculator.SetToolTip(cmdAsComplex, "Define a variable as complex. For example as.complex(-1) gives 1 + 0i")
         ttCalculator.SetToolTip(cmdReal, "The real part of a complex number. For example Re(3 + 2i) gives 3.")
         ttCalculator.SetToolTip(cmdImaginary, "The imaginary part of a complex number or variable. For example Im(3 + 2i) gives 2.")
@@ -290,9 +290,19 @@ Public Class ucrCalculator
         ttCalculator.SetToolTip(cmdComplexRad, "Change from degrees to radians. For example rad(90 + 180i) gives (1.571 + 3.142i)")
         ttCalculator.SetToolTip(cmdComplexDeg, " Change from radians to degrees. For example deg(pi/2 + 3.142i) gives (90 + 180i)")
         ttCalculator.SetToolTip(cmdComplexSqrt, "Square root. For example sqrt(-9 + 0i) gives (0 + 3i) or just 3i. sqrt(-9 + 2i) gives 0.331 + 3.018i)")
-        'to add  ttCalculator.SetToolTip(cmdComplexExp, "The exponential function. For example exp(3 + 2i) gives")
+        ttCalculator.SetToolTip(cmdComplexExp, "exponential function. For example exp(1 + 2i) gives -1.131+2.472i")
         ttCalculator.SetToolTip(cmdComplexRound, "round(pi/2 + 3.14259i) gives 2 + 3i) so rounds to whole numbers. round(pi/2 + 3.14259i, 2) gives 1.57 + 3.14i, so rounds to 2 decimals.")
         ttCalculator.SetToolTip(cmdComplexSignif, "Rounds to give the specified number off digits in the larger of the components. For example signif(0.424 + 511.38i, 3) gives (0 + 511i)")
+        ttCalculator.SetToolTip(cmdComplexSin, "sine of the angle in radians For example sin(1-1i) gives (1.2985-0.635i)")
+        ttCalculator.SetToolTip(cmdComplexCos, "cosine of the angle in radians. For example cos(1-1i) gives (0.8337+0.9889i)")
+        ttCalculator.SetToolTip(cmdComplexTan, "tangent of the angle in radians. For example tan(1-i) gives (0.272-1.084i)")
+        ttCalculator.SetToolTip(cmdComplexAsin, "arcsine, or inverse of the sine. It is the angle in radians corresponding to a given sine. For example asin(1.2985-0.635i) gives (1-1i)")
+        ttCalculator.SetToolTip(cmdComplexAcos, "arccos, or inverse of the cosine. It is the angle corresponding to a given cos. For example acos(0.8337+0.9889i) gives (1-1i)")
+        ttCalculator.SetToolTip(cmdComplexAtan, "arctan or inverse of the tangent. It is the angle corresponding to a given tan. For example atan(0.272-1.084i) gives (1-1i)")
+        ttCalculator.SetToolTip(cmdComplexSinH, " hyperbolic sin of a number in radians (asinh also exists)")
+        ttCalculator.SetToolTip(cmdComplexCosH, "hyperbolic cosine of a number in radians (acosh also exists)")
+        ttCalculator.SetToolTip(cmdComplexTanH, "hyperbolic tangent of a number in radians (atanh also exists)")
+        ttCalculator.SetToolTip(cmdComplexLog, "natural logarithm. For example log(1 + 2i) gives 0.805+1.107i")
 
         'Hydro GOF keyboard tooltips
         ttCalculator.SetToolTip(cmdBr2, "r-squared times the slope of the regression line between sim and obs")
@@ -418,7 +428,29 @@ Public Class ucrCalculator
         ttCalculator.SetToolTip(cmdSec, "Extract second from date-time variable. For example second(""1984-05-12 14:23:45"") is 45")
         ttCalculator.SetToolTip(cmdQuarter, " 3-month period of the year from a date or date-time variable. For example quarter(""1984-05-12"") gives 2")
 
-        Const strTooltipCmdLength = "number of observations: For example length(c(1,2,3,4,NA)) = 5 "
+        ' Factor keyboard tooltips
+        ttCalculator.SetToolTip(cmdFactor, "Make a factor from a numeric or character variable")
+        ttCalculator.SetToolTip(cmdAnon, "Anonymise factor levels, replacing them by a number. Optionally add a profix, for example fct_anon(name, ""n"")")
+        ttCalculator.SetToolTip(cmdLabelled, "Create a labelled variable")
+        ttCalculator.SetToolTip(cmdCollapse, "Combine factor levels. For example fct_collapse(variety, trad=""TRAD"",improved=c(""NEW"",""OLD""))")
+        ttCalculator.SetToolTip(cmdCross, "Make interaction variable. For example fct_cross(variety,fertgrp, keep_empty=TRUE)")
+        ttCalculator.SetToolTip(cmdDrop, "Drop unused levels")
+        ttCalculator.SetToolTip(cmdExpand, "Add additional levels. For example fct_expand(Village, ""New"", ""Newer"")")
+        ttCalculator.SetToolTip(cmdAdd_na, "Make missing values into an additional factor level. For example fct_na_value_to_level(fertgrp)")
+        ttCalculator.SetToolTip(cmdInorder, "Order the factor levels by their appearance in the data")
+        ttCalculator.SetToolTip(cmdInfreq, "Order the factor levels by their frequency ")
+        ttCalculator.SetToolTip(cmdInseq, "Order a factor with numeric levels")
+        ttCalculator.SetToolTip(cmdLump, "Change all levels appearing less than min times into Other. For example fct_lump_min(Variety,10)")
+        ttCalculator.SetToolTip(cmdmatch, "Make a logical variable with TRUE when levels are in the factor. For example fct_match(variety,c(""NEW"",""OLD""))")
+        ttCalculator.SetToolTip(cmdOther, " Replace levels with Other. For example fct_other(variety, keep=""NEW"")")
+        ttCalculator.SetToolTip(cmdRecode, "Change factor levels. For example fct_recode(variety,improved=""NEW"",improved=""OLD"")")
+        ttCalculator.SetToolTip(cmdRelevel, " Reorder factor levels. For example fct_relevel(fertgrp,""0cwt"", "".5-2cwt"")")
+        ttCalculator.SetToolTip(cmdReorder, "Reorder levels using (default ofmedian of another variable. For example fct_reorder(variety,yield)")
+        ttCalculator.SetToolTip(cmdReverse, "Reverse the order of the factor levels")
+        ttCalculator.SetToolTip(cmdShift, "Shift the order of the factor levels")
+        ttCalculator.SetToolTip(cmdShuffle, "Shuffle the order of the factor levels")
+
+        Const strTooltipCmdLength = "number Of observations: For example length(c(1,2,3,4,NA)) = 5 "
         ttCalculator.SetToolTip(cmdLength, strTooltipCmdLength)
         ttCalculator.SetToolTip(cmdListLength, strTooltipCmdLength)
 
@@ -1066,16 +1098,15 @@ Public Class ucrCalculator
         End If
     End Sub
 
-    Private Sub cmdAcos_Click(sender As Object, e As EventArgs) Handles cmdAcos.Click
+    Private Sub cmdAcos_Click(sender As Object, e As EventArgs) Handles cmdAcos.Click, cmdComplexAcos.Click
         If chkShowParameters.Checked Then
             ucrReceiverForCalculation.AddToReceiverAtCursorPosition("acos(x= )", 1)
         Else
             ucrReceiverForCalculation.AddToReceiverAtCursorPosition("acos()", 1)
         End If
-
     End Sub
 
-    Private Sub cmdAsin_Click(sender As Object, e As EventArgs) Handles cmdAsin.Click
+    Private Sub cmdAsin_Click(sender As Object, e As EventArgs) Handles cmdAsin.Click, cmdComplexAsin.Click
         If chkShowParameters.Checked Then
             ucrReceiverForCalculation.AddToReceiverAtCursorPosition("asin(x= )", 1)
         Else
@@ -1083,7 +1114,7 @@ Public Class ucrCalculator
         End If
     End Sub
 
-    Private Sub cmdAtan_Click(sender As Object, e As EventArgs) Handles cmdAtan.Click
+    Private Sub cmdAtan_Click(sender As Object, e As EventArgs) Handles cmdAtan.Click, cmdComplexAtan.Click
         If chkShowParameters.Checked Then
             ucrReceiverForCalculation.AddToReceiverAtCursorPosition("atan(x = )", 1)
         Else
@@ -3607,9 +3638,9 @@ Public Class ucrCalculator
 
     Private Sub cmdAdd_na_Click(sender As Object, e As EventArgs) Handles cmdAdd_na.Click
         If chkShowParameters.Checked Then
-            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("forcats::fct_explicit_na(f = , na_level = ""(Missing)"")", 26)
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("forcats::fct_na_value_to_level(f = , na_level = ""(Missing)"")", 26)
         Else
-            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("forcats::fct_explicit_na()", 1)
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("forcats::fct_na_value_to_level()", 1)
         End If
     End Sub
 
@@ -3639,9 +3670,9 @@ Public Class ucrCalculator
 
     Private Sub cmdLump_Click(sender As Object, e As EventArgs) Handles cmdLump.Click
         If chkShowParameters.Checked Then
-            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("forcats::fct_lump(f = , n, prop, w = NULL, other_level = ""Other"", ties.method = c(""min"", ""average"", ""first"", ""last"", ""random"", ""max""))", 113)
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("forcats::fct_lump_min(f = , n, prop, w = NULL, other_level = ""Other"", ties.method = c(""min"", ""average"", ""first"", ""last"", ""random"", ""max""))", 113)
         Else
-            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("forcats::fct_lump()", 1)
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition("forcats::fct_lump_min()", 1)
         End If
     End Sub
 
