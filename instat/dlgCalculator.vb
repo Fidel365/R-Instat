@@ -18,6 +18,12 @@ Imports System.ComponentModel
 Imports instat.Translations
 
 Public Class dlgCalculator
+    Public enumCalculatorMode As String = CalculatorMode.Prepare
+    Public Enum CalculatorMode
+        Prepare
+        Structured
+    End Enum
+
     Private clsAttachFunction As New RFunction
     Private clsDetachFunction As New RFunction
     Private clsRemoveLabelsFunction As New RFunction
@@ -38,6 +44,7 @@ Public Class dlgCalculator
         Else
             ReopenDialog()
         End If
+        SetHelpOptions()
         TestOKEnabled()
         autoTranslate(Me)
     End Sub
@@ -134,7 +141,15 @@ Public Class dlgCalculator
             ucrBase.clsRsyntax.iCallType = 5
             ucrBase.clsRsyntax.bExcludeAssignedFunctionOutput = False
         End If
+    End Sub
 
+    Private Sub SetHelpOptions()
+        Select Case enumCalculatorMode
+            Case CalculatorMode.Prepare
+                ucrBase.iHelpTopicID = 14
+            Case CalculatorMode.Structured
+                ucrBase.iHelpTopicID = 176
+        End Select
     End Sub
 
     Private Sub ucrBase_ClickOk(sender As Object, e As EventArgs) Handles ucrBase.ClickOk

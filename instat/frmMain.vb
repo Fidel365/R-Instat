@@ -1206,6 +1206,7 @@ Public Class frmMain
 
     Private Sub mnuDescribeMultivariateCorrelations_Click(sender As Object, e As EventArgs) Handles mnuDescribeMultivariateCorrelations.Click
         dlgCorrelation.SetMultipleSequenceAsDefaultOption()
+        dlgCorrelation.enumCorrelationMode = dlgCorrelation.CorrelationMode.DescribeMultivariate
         dlgCorrelation.ShowDialog()
     End Sub
 
@@ -1476,6 +1477,7 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuClimaticFileImportandTidyNetCDF_Click(sender As Object, e As EventArgs) Handles mnuClimaticFileImportandTidyNetCDF.Click
+        dlgOpenNetCDF.enumNetCDFMode = dlgOpenNetCDF.NetCDFMode.Climatic
         dlgOpenNetCDF.ShowDialog()
     End Sub
 
@@ -1932,6 +1934,7 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuFileImportandTidyNetCDFFile_Click(sender As Object, e As EventArgs) Handles mnuFileImportandTidyNetCDFFile.Click
+        dlgOpenNetCDF.enumNetCDFMode = dlgOpenNetCDF.NetCDFMode.File
         dlgOpenNetCDF.ShowDialog()
     End Sub
 
@@ -2166,6 +2169,7 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuPrepareCalculateCalculations_Click(sender As Object, e As EventArgs) Handles mnuPrepareCalculator.Click
+        dlgCalculator.enumCalculatorMode = dlgCalculator.CalculatorMode.Prepare
         dlgCalculator.ShowDialog()
     End Sub
 
@@ -2332,6 +2336,7 @@ Public Class frmMain
 
     Private Sub mnuClimaticCompareCorrelations_Click(sender As Object, e As EventArgs) Handles mnuClimaticCompareCorrelations.Click
         dlgCorrelation.SetMultipleSequenceAsDefaultOption()
+        dlgCorrelation.enumCorrelationMode = dlgCorrelation.CorrelationMode.Climatic
         dlgCorrelation.ShowDialog()
     End Sub
 
@@ -2354,6 +2359,7 @@ Public Class frmMain
         If dlgCalculator.bFirstLoad Then
             dlgCalculator.SetDefaultKeyboard("Circular")
         End If
+        dlgCalculator.enumCalculatorMode = dlgCalculator.CalculatorMode.Structured
         dlgCalculator.ShowDialog()
     End Sub
 
@@ -2542,6 +2548,7 @@ Public Class frmMain
     Private Sub mnuDescribeTwoThreeVariablesCorrelations_Click(sender As Object, e As EventArgs) Handles mnuDescribeTwoThreeVariablesCorrelations.Click
         dlgCorrelation.mnuCurrent = mnuDescribeTwoThreeVariablesCorrelations
         dlgCorrelation.SetTwoVariableSequenceAsDefaultOption()
+        dlgCorrelation.enumCorrelationMode = dlgCorrelation.CorrelationMode.DescribeTwoThree
         dlgCorrelation.ShowDialog()
     End Sub
 
@@ -2731,5 +2738,13 @@ Public Class frmMain
 
     Private Sub mnuClimaticFileExportToGoogleBucketsToolStrip_Click(sender As Object, e As EventArgs) Handles mnuClimaticFileExportToGoogleBucketsToolStrip.Click
         dlgExportClimaticDefinitions.ShowDialog()
+    End Sub
+
+    Private Sub mnuDescribe_Click(sender As Object, e As EventArgs) Handles mnuDescribe.Click
+
+    End Sub
+
+    Private Sub mnuPrepare_Click(sender As Object, e As EventArgs) Handles mnuPrepare.Click
+
     End Sub
 End Class

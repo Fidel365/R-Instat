@@ -16,6 +16,13 @@
 
 Imports instat.Translations
 Public Class dlgCorrelation
+    Public enumCorrelationMode As String = CorrelationMode.DescribeMultivariate
+    Public Enum CorrelationMode
+        DescribeMultivariate
+        DescribeTwoThree
+        Climatic
+    End Enum
+
     Private bFirstload As Boolean = True
     Private bReset As Boolean = True
     Private bRcodeSet As Boolean = True
@@ -41,6 +48,7 @@ Public Class dlgCorrelation
         MultipleOption
         TwoVariableOption
     End Enum
+
     Private Sub dlgCorrelation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If bFirstload Then
             InitialiseDialog()
@@ -55,6 +63,7 @@ Public Class dlgCorrelation
         End If
         SetRCodeForControls(bReset)
         bReset = False
+        SetHelpOptions()
         SetDefaultColumn()
         TestOKEnabled()
         autoTranslate(Me)
@@ -477,6 +486,17 @@ Public Class dlgCorrelation
                 ucrBase.clsRsyntax.SetBaseRFunction(clsCorrelationTestFunction)
             End If
         End If
+    End Sub
+
+    Private Sub SetHelpOptions()
+        Select Case enumCorrelationMode
+            Case CorrelationMode.DescribeMultivariate
+                ucrBase.iHelpTopicID = 421
+            Case CorrelationMode.DescribeTwoThree
+                ucrBase.iHelpTopicID = 153
+            Case CorrelationMode.Climatic
+                ucrBase.iHelpTopicID = 637
+        End Select
     End Sub
 
     Private Sub ucrReceiverMultipleColumns_ControlValueChanged(ucrChangedControl As ucrCore) Handles ucrReceiverMultipleColumns.ControlValueChanged, ucrReceiverFirstColumn.ControlValueChanged, ucrReceiverSecondColumn.ControlValueChanged
