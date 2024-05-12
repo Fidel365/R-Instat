@@ -42,7 +42,6 @@ Public Class sdgDataOptions
             SetDefaults()
             bFirstLoad = False
         End If
-        SetHelpOptions()
         autoTranslate(Me)
     End Sub
 
@@ -146,15 +145,6 @@ Public Class sdgDataOptions
         strCurrentDataFrame = strNewDataFrame
         ucrSelectorFilters.SetDataframe(strCurrentDataFrame, bEnabled)
         ucrSelectorForSelectColumns.SetDataframe(strCurrentDataFrame, bEnabled)
-    End Sub
-
-    Private Sub SetHelpOptions()
-        Select Case dlgCalculator.enumCalculatorMode
-            Case dlgCalculator.CalculatorMode.Prepare
-                ucrSubDialogueBase.iHelpTopicID = 596
-            Case dlgCalculator.CalculatorMode.Structured
-                ucrSubDialogueBase.iHelpTopicID = 677
-        End Select
     End Sub
 
     Private Sub cmdRemoveCurrentFilter_Click(sender As Object, e As EventArgs) Handles cmdRemoveCurrentFilter.Click

@@ -79,7 +79,7 @@ Public Class dlgCalculator
     End Sub
 
     Private Sub InitialiseDialog()
-        ucrBase.iHelpTopicID = 14
+        'ucrBase.iHelpTopicID = 14
         ucrCalc.ucrReceiverForCalculation.SetMeAsReceiver()
         ucrCalc.ucrTryCalculator.SetIsCommand()
         ucrCalc.ucrTryCalculator.SetReceiver(ucrCalc.ucrReceiverForCalculation)
@@ -198,15 +198,18 @@ Public Class dlgCalculator
                 Me.Width = iBasicWidth * 1.48
                 ucrBase.iHelpTopicID = 166
             Case "Circular"
-                Me.Width = iBasicWidth * 1.36
-                ucrBase.iHelpTopicID = 596
+                If CalculatorMode.Prepare Then
+                    Me.Width = iBasicWidth * 1.36
+                    ucrBase.iHelpTopicID = 596
+                ElseIf CalculatorMode.Structured Then
+                    Me.Width = iBasicWidth * 1.36
+                    ucrBase.iHelpTopicID = 677
+                End If
             Case "Wakefield"
                 Me.Width = iBasicWidth * 1.73
                 ucrBase.iHelpTopicID = 444
             Case "Modifier"
                 Me.Width = iBasicWidth * 1.39
-            Case "Symbols"
-                Me.Width = iBasicWidth * 2.56
             Case "Goodness of Fit"
                 Me.Width = iBasicWidth * 1.27
                 ucrBase.iHelpTopicID = 598
