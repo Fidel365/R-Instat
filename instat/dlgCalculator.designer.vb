@@ -49,7 +49,7 @@ Partial Class dlgCalculator
         Me.ucrBase.Location = New System.Drawing.Point(10, 359)
         Me.ucrBase.Margin = New System.Windows.Forms.Padding(4)
         Me.ucrBase.Name = "ucrBase"
-        Me.ucrBase.Size = New System.Drawing.Size(405, 52)
+        Me.ucrBase.Size = New System.Drawing.Size(408, 52)
         Me.ucrBase.TabIndex = 175
         '
         'ucrCalc
@@ -58,7 +58,7 @@ Partial Class dlgCalculator
         Me.ucrCalc.Location = New System.Drawing.Point(10, 5)
         Me.ucrCalc.Margin = New System.Windows.Forms.Padding(4)
         Me.ucrCalc.Name = "ucrCalc"
-        Me.ucrCalc.Size = New System.Drawing.Size(860, 358)
+        Me.ucrCalc.Size = New System.Drawing.Size(866, 358)
         Me.ucrCalc.TabIndex = 174
         '
         'dlgCalculator

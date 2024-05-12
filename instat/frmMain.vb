@@ -2356,10 +2356,10 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuStructuredCircularCalculator_Click(sender As Object, e As EventArgs) Handles mnuStructuredCircularCalculator.Click
+        dlgCalculator.enumCalculatorMode = dlgCalculator.CalculatorMode.Structured
         If dlgCalculator.bFirstLoad Then
             dlgCalculator.SetDefaultKeyboard("Circular")
         End If
-        dlgCalculator.enumCalculatorMode = dlgCalculator.CalculatorMode.Structured
         dlgCalculator.ShowDialog()
     End Sub
 
