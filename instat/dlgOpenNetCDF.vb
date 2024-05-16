@@ -21,6 +21,12 @@ Imports RDotNet
 Imports System.ComponentModel
 
 Public Class dlgOpenNetCDF
+    Public enumNetCDFMode As String = NetCDFMode.File
+    Public Enum NetCDFMode
+        File
+        Climatic
+    End Enum
+
     Private bFirstLoad As Boolean = True
     Private bReset As Boolean = True
     Private clsImportNetcdfFunction, clsNcOpenFunction, clsNcCloseFunction, clsRFileDetails As New RFunction
@@ -67,6 +73,7 @@ Public Class dlgOpenNetCDF
             OpenFile()
         End If
         bReset = False
+        SetHelpOptions()
         TestOkEnabled()
         autoTranslate(Me)
     End Sub
@@ -348,6 +355,15 @@ Public Class dlgOpenNetCDF
         Else
         End If
         autoTranslate(Me)
+    End Sub
+
+    Private Sub SetHelpOptions()
+        Select Case enumNetCDFMode
+            Case NetCDFMode.File
+                ucrBase.iHelpTopicID = 393
+            Case NetCDFMode.Climatic
+                ucrBase.iHelpTopicID = 381
+        End Select
     End Sub
 
     Private Sub DescriptionButtons_CheckedChanged(sender As Object, e As EventArgs) Handles rdoShort.CheckedChanged, rdoMedium.CheckedChanged, rdoLong.CheckedChanged

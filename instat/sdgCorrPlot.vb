@@ -27,6 +27,7 @@ Public Class sdgCorrPlot
     Public strDataFrame As String
 
     Private Sub sdgCorrPlot_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SetSelectedDefaultSequenceOption()
         autoTranslate(Me)
     End Sub
 
@@ -209,6 +210,17 @@ Public Class sdgCorrPlot
             clsRsyntax.AddToAfterCodes(clsRGGscatMatricReverseOperator, iPosition:=3)
             clsDummyFunction.AddParameter("checked", "scatter", iPosition:=0)
         End If
+    End Sub
+
+    Private Sub SetSelectedDefaultSequenceOption()
+        Select Case dlgCorrelation.enumDefaultSequenceOption
+            Case dlgCorrelation.DefaultSequenceOption.MultipleOption.MultipleOption
+                ucrBaseSdgCorrPlot.iHelpTopicID = 188
+            Case dlgCorrelation.DefaultSequenceOption.TwoVariableOption.TwoVariableOption
+                ucrBaseSdgCorrPlot.iHelpTopicID = 675
+            Case dlgCorrelation.DefaultSequenceOption.ClimaticOption.ClimaticOption
+                ucrBaseSdgCorrPlot.iHelpTopicID = 676
+        End Select
     End Sub
 
     Private Sub ucrChkReverseLegendOrder_ControlValueChanged(ucrChangedControl As ucrCore) Handles ucrChkReverseLegendOrder.ControlValueChanged

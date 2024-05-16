@@ -30,17 +30,19 @@ Public Class dlgCorrelation
     Private clsNotOperator As New ROperator
     Private clsRGGscatMatricReverseOperator As New ROperator
     Private strColFunction As String
-    Private enumDefaultSequenceOption As DefaultSequenceOption = DefaultSequenceOption.MultipleOption
+    Public enumDefaultSequenceOption As DefaultSequenceOption = DefaultSequenceOption.MultipleOption
     Private bDefaultOptionChanged As Boolean = False
     Private bResetSubdialog As Boolean = False
     Public strDefaultDataFrame As String = ""
     Public strDefaultColumns() As String = Nothing
     Public mnuCurrent As ToolStripMenuItem
 
-    Private Enum DefaultSequenceOption
+    Public Enum DefaultSequenceOption
         MultipleOption
         TwoVariableOption
+        ClimaticOption
     End Enum
+
     Private Sub dlgCorrelation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If bFirstload Then
             InitialiseDialog()
@@ -65,8 +67,13 @@ Public Class dlgCorrelation
         Select Case enumDefaultSequenceOption
             Case DefaultSequenceOption.MultipleOption
                 rdoMultipleColumns.Checked = True
+                ucrBase.iHelpTopicID = 421
             Case DefaultSequenceOption.TwoVariableOption
                 rdoTwoColumns.Checked = True
+                ucrBase.iHelpTopicID = 153
+            Case DefaultSequenceOption.ClimaticOption
+                rdoMultipleColumns.Checked = True
+                ucrBase.iHelpTopicID = 637
         End Select
     End Sub
 
@@ -85,6 +92,12 @@ Public Class dlgCorrelation
         enumDefaultSequenceOption = DefaultSequenceOption.TwoVariableOption
         bDefaultOptionChanged = True
     End Sub
+
+    Public Sub SetClimaticAsDefaultOption()
+        enumDefaultSequenceOption = DefaultSequenceOption.ClimaticOption
+        bDefaultOptionChanged = True
+    End Sub
+
     Private Sub InitialiseDialog()
         Dim dctNaPrint As New Dictionary(Of String, String)
         Dim dctDiagonal As New Dictionary(Of String, String)
