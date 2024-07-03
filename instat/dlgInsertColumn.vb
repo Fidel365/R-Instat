@@ -175,14 +175,18 @@ Public Class dlgInsertColumn
                     ucrBase.OKEnabled(False)
                 End If
             ElseIf rdoInsertRows.Checked Then
-                If (ucrNudNumberOfRows.GetText <> "" AndAlso ucrNudStartRow.GetText <> "") Then
-                    ucrBase.OKEnabled(True)
-                Else
-                    ucrBase.OKEnabled(False)
-                End If
-            End If
+                Dim dataFrameName As String = ucrSelectorInsertColumns.ucrAvailableDataFrames.cboAvailableDataFrames.SelectedItem
+                Dim tibble As New RFunction
 
-        Else
+                If ti Then
+                    If (ucrNudNumberOfRows.GetText <> "" AndAlso ucrNudStartRow.GetText <> "") Then
+                        ucrBase.OKEnabled(True)
+                    Else
+                        ucrBase.OKEnabled(False)
+                    End If
+                End If
+
+            Else
             ucrBase.OKEnabled(False)
         End If
     End Sub

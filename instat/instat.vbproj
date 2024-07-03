@@ -313,6 +313,12 @@
     </Compile>
     <Compile Include="Enum\RObjectFormat.vb" />
     <Compile Include="Enum\RObjectTypeLabel.vb" />
+    <Compile Include="frmConvertToRowNumbers.Designer.vb">
+      <DependentUpon>frmConvertToRowNumbers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConvertToRowNumbers.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="sdgDefineAnnualRainfall.Designer.vb">
       <DependentUpon>sdgDefineAnnualRainfall.vb</DependentUpon>
     </Compile>
@@ -3193,6 +3199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dlgWordwrap.resx">
       <DependentUpon>dlgWordwrap.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConvertToRowNumbers.resx">
+      <DependentUpon>frmConvertToRowNumbers.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConvertToNumeric.resx">
       <DependentUpon>frmConvertToNumeric.vb</DependentUpon>
