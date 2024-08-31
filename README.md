@@ -35,3 +35,4 @@ We welcome anyone who wants to contribute to our project in a variety of ways:
 ## License
 
 R-Instat is free software licensed under the GNU General Public License version 3.
+# R-package-For-RInstat
