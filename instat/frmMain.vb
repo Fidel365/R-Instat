@@ -306,8 +306,8 @@ Public Class frmMain
         splExtraWindows.SplitterDistance = splExtraWindows.Width / 2
         splMetadata.SplitterDistance = splMetadata.Width / 2
 
-        'mnuViewDataView.Checked = True
-        'mnuViewOutput.Checked = True
+        mnuViewDataView.Checked = True
+        mnuViewOutput.Checked = True
         mnuViewDataFrameMetadata.Checked = False
         mnuViewColumnMetadata.Checked = False
         mnuViewLogScript.Checked = False

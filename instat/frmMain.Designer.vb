@@ -3220,6 +3220,7 @@ Partial Class frmMain
         '
         'mnuSwapDataMetadata
         '
+        Me.mnuSwapDataMetadata.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.mnuSwapDataMetadata.Name = "mnuSwapDataMetadata"
         Me.mnuSwapDataMetadata.Size = New System.Drawing.Size(245, 22)
         Me.mnuSwapDataMetadata.Text = "SwapData and ColumnMetadata"
