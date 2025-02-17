@@ -1422,22 +1422,58 @@ Public Class ucrCalculator
 
     Private Sub cmdQuantile_Click(sender As Object, e As EventArgs) Handles cmdQuantile.Click
         Dim clsQuantileFunction As New RFunction
+        '  clsDataFunction.SetRCommand("nrow")
 
-        clsDataFunction.SetRCommand("nrow")
+        If chkShowParameters.Checked Then
+            clsDataFunction.AddParameter("x", ucrSelectorForCalculations.ucrAvailableDataFrames.cboAvailableDataFrames.SelectedItem, iPosition:=0)
+
+            clsQuantileFunction.SetRCommand("quantile")
+            clsQuantileFunction.AddParameter("x", "", iPosition:=0)
+            clsQuantileFunction.AddParameter("probs", "0.5", iPosition:=1)
+            clsQuantileFunction.AddParameter("na.rm", "TRUE", iPosition:=2)
+            clsQuantileFunction.AddParameter("names", "FALSE", iPosition:=3)
+            clsQuantileFunction.AddParameter("type", "7", iPosition:=4)
+
+            '  clsRepFunction.SetRCommand("quantile")
+            clsRepFunction.AddParameter("x", clsRFunctionParameter:=clsQuantileFunction, iPosition:=1)
+            ' clsRepFunction.AddParameter("len", clsRFunctionParameter:=clsDataFunction, iPosition:=1)
+
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition(clsRepFunction.ToScript, 57)
+        Else
+            clsQuantileFunction.SetRCommand("quantile")
+            clsQuantileFunction.AddParameter("x", "", iPosition:=0)
+            clsQuantileFunction.AddParameter("probs", "0.5", iPosition:=1)
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition(clsRepFunction.ToScript, 40)
+
+        End If
+    End Sub
+
+    Private Sub cmdQuantile3_Click(sender As Object, e As EventArgs) Handles cmdQuantile3.Click
+        Dim clsQuantileFunction As New RFunction
+        '  clsDataFunction.SetRCommand("nrow")
         clsDataFunction.AddParameter("x", ucrSelectorForCalculations.ucrAvailableDataFrames.cboAvailableDataFrames.SelectedItem, iPosition:=0)
 
-        clsQuantileFunction.SetRCommand("quantile")
-        clsQuantileFunction.AddParameter("x", "", iPosition:=0)
-        clsQuantileFunction.AddParameter("probs", "0.5", iPosition:=1)
-        clsQuantileFunction.AddParameter("na.rm", "TRUE", iPosition:=2)
-        clsQuantileFunction.AddParameter("names", "FALSE", iPosition:=3)
-        clsQuantileFunction.AddParameter("type", "7", iPosition:=4)
+        If chkShowParameters.Checked Then
+            clsQuantileFunction.SetRCommand("quantile")
+            clsQuantileFunction.AddParameter("x", "", iPosition:=0)
+            clsQuantileFunction.AddParameter("probs", "0.5", iPosition:=1)
+            clsQuantileFunction.AddParameter("na.rm", "TRUE", iPosition:=2)
+            clsQuantileFunction.AddParameter("names", "FALSE", iPosition:=3)
+            clsQuantileFunction.AddParameter("type", "3", iPosition:=4)
 
-        clsRepFunction.SetRCommand("rep")
-        clsRepFunction.AddParameter("x", clsRFunctionParameter:=clsQuantileFunction, iPosition:=0)
-        clsRepFunction.AddParameter("len", clsRFunctionParameter:=clsDataFunction, iPosition:=1)
+            '  clsRepFunction.SetRCommand("rep")
+            clsRepFunction.AddParameter("x", clsRFunctionParameter:=clsQuantileFunction, iPosition:=0)
+            '   clsRepFunction.AddParameter("len", clsRFunctionParameter:=clsDataFunction, iPosition:=1)
 
-        ucrReceiverForCalculation.AddToReceiverAtCursorPosition(clsRepFunction.ToScript, 66)
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition(clsRepFunction.ToScript, 66)
+        Else
+            clsQuantileFunction.SetRCommand("quantile")
+            clsQuantileFunction.AddParameter("x", "", iPosition:=0)
+            clsQuantileFunction.AddParameter("probs", "0.5", iPosition:=1)
+            clsQuantileFunction.AddParameter("type", "3", iPosition:=4)
+            ucrReceiverForCalculation.AddToReceiverAtCursorPosition(clsRepFunction.ToScript, 40)
+
+        End If
     End Sub
 
     Private Sub cmdIQR_Click(sender As Object, e As EventArgs) Handles cmdIQR.Click
